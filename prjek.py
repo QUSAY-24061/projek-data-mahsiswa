@@ -17,6 +17,22 @@ class Nilai:
         self.mata_kuliah = mata_kuliah
         self.nilai = nilai
 
+    # ==============================
+    # MODIFIKASI:
+    # Method untuk mengubah nilai angka menjadi nilai huruf
+    # ==============================
+    def nilai_huruf(self):
+        if self.nilai >= 85:
+            return "A"
+        elif self.nilai >= 70:
+            return "B"
+        elif self.nilai >= 60:
+            return "C"
+        elif self.nilai >= 50:
+            return "D"
+        else:
+            return "E"
+
 
 # Class Sistem Nilai (Program Utama)
 class SistemNilai:
@@ -25,12 +41,12 @@ class SistemNilai:
 
     def tambah_data(self):
         print("\n=== Tambah Data Mahasiswa ===")
-        
+
         nama = "Qusay"  # Nama otomatis
-        npm = input("NPM : 24061 ")
-        jurusan = input("Jurusan : informatika ")
-        matkul = input("Mata Kuliah : pbo ")
-        nilai_angka = int(input("Nilai : 100 "))
+        npm = input("NPM : ")
+        jurusan = input("Jurusan : ")
+        matkul = input("Mata Kuliah : ")
+        nilai_angka = int(input("Nilai : "))
 
         mahasiswa = Mahasiswa(nama, npm, jurusan)
         nilai = Nilai(matkul, nilai_angka)
@@ -49,26 +65,8 @@ class SistemNilai:
                 print("NPM         :", mhs.npm)
                 print("Jurusan     :", mhs.jurusan)
                 print("Mata Kuliah :", nilai.mata_kuliah)
-                print("Nilai       :", nilai.nilai)
-
-    def jalankan(self):
-        while True:
-            print("\n=== MENU SISTEM INFORMASI NILAI MAHASISWA ===")
-            print("1. Tambah Data Mahasiswa")
-            print("2. Tampilkan Data Mahasiswa")
-            print("0. Keluar")
-
-            pilihan = input("Pilih menu: ")
-
-            if pilihan == "1":
-                self.tambah_data()
-            elif pilihan == "2":
-                self.tampilkan_data()
-            elif pilihan == "0":
-                print("Program selesai. Terima kasih.")
-                break
-            else:
-                print("Pilihan tidak valid!")
+                print("Nilai Angka :", nilai.nilai)
+                print("Nilai Huruf :", nilai.nilai_huruf())  # PEMANGGILAN MODIFIKASI
 
 
 # Menjalankan Program
